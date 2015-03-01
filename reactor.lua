@@ -1,4 +1,4 @@
--- V1.0.0
+-- V1.0.1
 local turbines = {
    "BigReactors-Turbine_15",
    "BigReactors-Turbine_9",
@@ -50,10 +50,15 @@ while 1 do
 
       curTurbine.setActive(true)
       curReactor.setActive(true)
-      sleep(5)
+      sleep(30)
 
       curTurbine.setActive(false)
       curReactor.setActive(false)
+
+      sleep(1)
+      curTurbine.setActive(false)
+      curReactor.setActive(false)
+      sleep(1)
    end
 
 end
