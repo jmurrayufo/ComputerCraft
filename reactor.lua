@@ -15,10 +15,10 @@ local turbines = {
 }
 
 local reactors = {
-   "BigReactors-Reactor_11",
-   "BigReactors-Reactor_10",
-   "BigReactors-Reactor_13",
-   "BigReactors-Reactor_12",
+   "BigReactors-Reactor_11", --#10
+   "BigReactors-Reactor_10", --#7
+   "BigReactors-Reactor_13", --#12
+   "BigReactors-Reactor_12", --#9
    "BigReactors-Reactor_14",
    "BigReactors-Reactor_8",
    "BigReactors-Reactor_7",
@@ -50,7 +50,7 @@ while 1 do
 
       curTurbine.setActive(true)
       curReactor.setActive(true)
-      sleep(40)
+      sleep(25)
 
       curTurbine.setActive(false)
       curReactor.setActive(false)
