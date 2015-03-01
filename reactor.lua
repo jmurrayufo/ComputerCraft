@@ -33,23 +33,27 @@ local myScr = peripheral.wrap("right")
 local curReactor
 local curTurbine
 
-local i
+local i = 1
 myScr.setCursorPos(1,1)
 myScr.clear()
 
 while 1 do
-   myScr.scroll(-1)
-   myScr.setCursorPos(1,1)
-   myScr.write("Index:"..i)
-   curTurbine = peripheral.find( turbines[i] )
-   curReactor = peripheral.find( reactors[i] )
+   for i=1,#turbines do
+      myScr.scroll(-1)
+      myScr.setCursorPos(1,1)
+      myScr.write("Index:"..i)
+      print(turbines[i])
+      print(reactors[i])
+      curTurbine = peripheral.find( turbines[i] )
+      curReactor = peripheral.find( reactors[i] )
 
-   curTurbine.setActive(true)
-   curReactor.setActive(true)
-   sleep(1)
+      curTurbine.setActive(true)
+      curReactor.setActive(true)
+      sleep(1)
 
-   curTurbine.setActive(false)
-   curReactor.setActive(false)
-   sleep(1)
-   i=i+1
+      curTurbine.setActive(false)
+      curReactor.setActive(false)
+      sleep(1)
+   end
+
 end

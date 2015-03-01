@@ -18,6 +18,6 @@ end --close the function
 
 --get("startup.lua","startup")
 
-get("reactor.lua","react")
+get("reactor.lua","BR/react")
 
 print("fin")
