@@ -39,7 +39,7 @@ myScr.clear()
 
 while 1 do
    myScr.scroll(-1)
-   myScr.setCusorPos(1,1)
+   myScr.setCursorPos(1,1)
    myScr.write("Index:"..i)
    curTurbine = peripheral.find( turbines[i] )
    curReactor = peripheral.find( reactors[i] )
