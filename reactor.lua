@@ -29,6 +29,11 @@ local reactors = {
    "BigReactors-Reactor_13", --#12
 }
 
+
+function myTime ()
+   return os.day() + os.time()/24
+end
+
 local myScr = peripheral.wrap("right")
 
 local cT,Cr
@@ -36,21 +41,55 @@ local currentIndex = 2 --Should always be >= 2 and <= 12
 local turbineMaxInBuffer = 1000000
 local minRodSetting = 83
 local maxRodSetting = 100
-
-function myTime ()
-   return os.day() + os.time()/24
-end
+local timeOfLastAction = myTime()
 
 myScr.setCursorPos(1,1)
 myScr.clear()
 
 
 while 1 do
-   for i=1,currentIndex-1 do
+   foundLowTurb = false
+   print("Searching Turbines...")
+   for i = 1,currentIndex-1 do
       cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
       cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
-      print(cT.getEnergyStored())
+      if cT.getEnergyStored() < 0.99 *  turbineMaxInBuffer then
+         foundLowTurb = true
+         print("Found low@"..i)
+      end
    end
+
+   cR = peripheral.find( 
+      "BigReactors-Reactor", 
+      function(name,object) return name==reactors[currentIndex] end 
+      )
+
+   if foundLowTurb then
+      timeOfLastAction = myTime()
+      print("Power up")
+      
+      cR.setAllControlRodLevels( math.max( cR.getControlRodLevel(1) - 1, 82 ) )
+
+      if cR.getControlRodLevel(1) <= minRodSetting then
+         print("Next Reactor")
+         -- Index up a reactor if we can
+         currentIndex = math.min( currentIndex + 1, 12 )
+         -- the next loop will handle this 
+      end
+   elseif myTime() - timeOfLastAction > 1/24 then
+      timeOfLastAction = myTime()
+      print("Power down")
+      cR.setAllControlRodLevels( math.min( cR.getControlRodLevel(1) + 1, 100 ) )
+
+      if cR.getControlRodLevel(1) >= maxRodSetting then
+         print("Previous Reactor")
+         -- Index down a reactor if we can
+         currentIndex = math.max( currentIndex - 1, 2 )
+         -- the next loop will handle this 
+      end
+
+   end
+      
    sleep(10)
 end
 return
