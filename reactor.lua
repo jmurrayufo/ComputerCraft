@@ -44,8 +44,8 @@ while 1 do
       myScr.write("Index:"..i)
       print(turbines[i])
       print(reactors[i])
-      curTurbine = peripheral.find( turbines[i] )
-      curReactor = peripheral.find( reactors[i] )
+      curTurbine = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
+      curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
 
       curTurbine.setActive(true)
       curReactor.setActive(true)
