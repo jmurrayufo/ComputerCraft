@@ -15,13 +15,11 @@ local function get(repoFile,saveTo)
       print("an internet connection!")
    end --end the if
 end --close the function
-
-if fs.exists("/BR") then 
-   fs.delete("/BR")
-   print("Old Version Found, deleteing")
-   sleep(1)
-end
-
+shell.setDir("")
+fs.delete("BR")
+fs.makeDir("BR")
 get("main.lua","/BR/main")
-
+shell.setDir("/BR")
+print("You are now in the BR directory")
+print("Run \"main\"" please!")
 print("fin")
