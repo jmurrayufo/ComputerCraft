@@ -31,8 +31,7 @@ local reactors = {
 
 local myScr = peripheral.wrap("right")
 
-local curReactor
-local curTurbine
+local cT,Cr
 local currentIndex = 2 --Should always be >= 2 and <= 12
 local turbineMaxInBuffer = 1000000
 local minRodSetting = 83
@@ -48,11 +47,11 @@ myScr.clear()
 
 while 1 do
    for i=1,currentIndex-1 do
-      curTurbine = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
-      curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
-      print(i)
+      cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
+      cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
+      print(cT.getEnergyStored())
    end
-   break
+   sleep(10)
 end
 return
 
