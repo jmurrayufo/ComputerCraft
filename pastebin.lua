@@ -1,5 +1,7 @@
 --This script handles all other github scripts. It will remove old versions and download current ones. 
 -- Current version @ pastebin get Ah7mLyFv test
+-- Version 1.0.2
+--    Commit @ EtLCEDHY
 -- Version 1.0.1
 --    Fixed stupid error in quotes.
 --    Commit @ Ah7mLyFv

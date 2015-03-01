@@ -19,5 +19,7 @@ end --close the function
 --get("startup.lua","startup")
 
 get("reactor.lua","BR/react")
+get("resetAll.lua","BR/resetAll")
+get("off.lua","BR/off")
 
 print("fin")
