@@ -16,12 +16,8 @@ local function get(repoFile,saveTo)
    end --end the if
 end --close the function
 
-if fs.exists("/BR") then 
-   fs.delete("/BR")
-   print("Old Version Found, deleteing")
-   sleep(1)
-end
-
 --get("startup.lua","startup")
+
+get("reactor.lua","react")
 
 print("fin")
