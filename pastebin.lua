@@ -1,5 +1,10 @@
 --This script handles all other github scripts. It will remove old versions and download current ones. 
--- Current version @ pastebin get 0wmG5sCi test
+-- Current version @ pastebin get Ah7mLyFv test
+-- Version 1.0.1
+--    Fixed stupid error in quotes.
+--    Commit @ Ah7mLyFv
+-- Version 1.0.0
+--    Initial Commit @ 0wmG5sCi
 local function get(repoFile,saveTo)
    print("https://raw.github.com/jmurrayufo/ComputerCraft/master/"..repoFile)
    local download = http.get("https://raw.github.com/jmurrayufo/ComputerCraft/master/"..repoFile) --This will make 'download' hold the contents of the file.
