@@ -15,18 +15,18 @@ local turbines = {
 }
 
 local reactors = {
-   "BigReactors-Reactor_11", --#10
+   "BigReactors-Reactor_3", --#1
+   "BigReactors-Reactor_4", --#2
+   "BigReactors-Reactor_5", --#3
+   "BigReactors-Reactor_6", --#4
+   "BigReactors-Reactor_7", --#5
+   "BigReactors-Reactor_8", --#6
    "BigReactors-Reactor_10", --#7
-   "BigReactors-Reactor_13", --#12
+   "BigReactors-Reactor_9", --#8
    "BigReactors-Reactor_12", --#9
-   "BigReactors-Reactor_14",
-   "BigReactors-Reactor_8",
-   "BigReactors-Reactor_7",
-   "BigReactors-Reactor_6",
-   "BigReactors-Reactor_5",
-   "BigReactors-Reactor_4",
-   "BigReactors-Reactor_3",
-   "BigReactors-Reactor_9",
+   "BigReactors-Reactor_11", --#10
+   "BigReactors-Reactor_14", --#11
+   "BigReactors-Reactor_13", --#12
 }
 
 local myScr = peripheral.wrap("right")
@@ -49,11 +49,8 @@ while 1 do
       curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
 
       curTurbine.setActive(true)
-      curReactor.setActive(true)
-      sleep(25)
-
-      curTurbine.setActive(false)
-      curReactor.setActive(false)
+      --curReactor.setActive(false)
    end
-
+   sleep(1)
+   break
 end
