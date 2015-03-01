@@ -50,7 +50,7 @@ while 1 do
 
       curTurbine.setActive(true)
       curReactor.setActive(true)
-      sleep(15)
+      sleep(40)
 
       curTurbine.setActive(false)
       curReactor.setActive(false)
