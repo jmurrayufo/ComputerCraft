@@ -22,6 +22,6 @@ if fs.exists("/BR") then
    sleep(1)
 end
 
---get("startup.lua","startup")
+get("main.lua","/BR/main")
 
 print("fin")
