@@ -35,6 +35,11 @@ local curReactor
 local curTurbine
 
 local i = 1
+
+function myTime ()
+   return os.day() + os.time()/24
+end
+
 myScr.setCursorPos(1,1)
 myScr.clear()
 
@@ -49,7 +54,7 @@ while 1 do
       curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
 
       curTurbine.setActive(true)
-      curReactor.setAllControlRodLevels(99)
+      curReactor.setAllControlRodLevels(82)
       --curReactor.setActive(false)
    end
    sleep(1)
