@@ -33,8 +33,10 @@ local myScr = peripheral.wrap("right")
 
 local curReactor
 local curTurbine
-
-local i = 1
+local currentIndex = 2 --Should always be >= 2 and <= 12
+local turbineMaxInBuffer = 1000000
+local minRodSetting = 83
+local maxRodSetting = 100
 
 function myTime ()
    return os.day() + os.time()/24
@@ -43,7 +45,19 @@ end
 myScr.setCursorPos(1,1)
 myScr.clear()
 
+
 while 1 do
+   for i=1,currentIndex-1 do
+      curTurbine = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
+      curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
+      print(i)
+   end
+   break
+end
+return
+
+while 1 do
+   --local i = 1 --do I need this?
    for i=1,#turbines do
       myScr.scroll(-1)
       myScr.setCursorPos(1,1)
@@ -53,9 +67,9 @@ while 1 do
       curTurbine = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
       curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
 
-      curTurbine.setActive(true)
+      -- curTurbine.setActive(true)
       curReactor.setAllControlRodLevels(82)
-      --curReactor.setActive(false)
+      -- curReactor.setActive(false)
    end
    sleep(1)
    break
