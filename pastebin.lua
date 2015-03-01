@@ -1,5 +1,5 @@
 --This script handles all other github scripts. It will remove old versions and download current ones. 
-
+-- Current version @ pastebin get 0wmG5sCi test
 local function get(repoFile,saveTo)
    print("https://raw.github.com/jmurrayufo/ComputerCraft/master/"..repoFile)
    local download = http.get("https://raw.github.com/jmurrayufo/ComputerCraft/master/"..repoFile) --This will make 'download' hold the contents of the file.
@@ -21,5 +21,5 @@ fs.makeDir("BR")
 get("main.lua","/BR/main")
 shell.setDir("/BR")
 print("You are now in the BR directory")
-print("Run \"main\"" please!")
+print("Run \"main\" please!")
 print("fin")
