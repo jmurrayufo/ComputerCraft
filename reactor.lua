@@ -1,17 +1,17 @@
 -- V1.0.1
 local turbines = {
-   "BigReactors-Turbine_15",
-   "BigReactors-Turbine_9",
-   "BigReactors-Turbine_8",
-   "BigReactors-Turbine_7",
-   "BigReactors-Turbine_6",
-   "BigReactors-Turbine_5",
-   "BigReactors-Turbine_4",
-   "BigReactors-Turbine_10",
-   "BigReactors-Turbine_12",
-   "BigReactors-Turbine_11",
-   "BigReactors-Turbine_14",
-   "BigReactors-Turbine_13",
+   "BigReactors-Turbine_15", --#1
+   "BigReactors-Turbine_4", --#2
+   "BigReactors-Turbine_5", --#3
+   "BigReactors-Turbine_6", --#4
+   "BigReactors-Turbine_7", --#5
+   "BigReactors-Turbine_8", --#6
+   "BigReactors-Turbine_9", --#7
+   "BigReactors-Turbine_10", --#8
+   "BigReactors-Turbine_11", --#9
+   "BigReactors-Turbine_12", --#10
+   "BigReactors-Turbine_13", --#11
+   "BigReactors-Turbine_14", --#12
 }
 
 local reactors = {
@@ -50,15 +50,10 @@ while 1 do
 
       curTurbine.setActive(true)
       curReactor.setActive(true)
-      sleep(30)
+      sleep(15)
 
       curTurbine.setActive(false)
       curReactor.setActive(false)
-
-      sleep(1)
-      curTurbine.setActive(false)
-      curReactor.setActive(false)
-      sleep(1)
    end
 
 end
