@@ -92,6 +92,7 @@ while 1 do
 
    end
    print("Turbine:"..currentIndex)
+   print("    Raw:"..cR.getControlRodLevel(1))
    print(string.format("  Power: %f%%",(100-cR.getControlRodLevel(1))*5.555 ) )
       
    sleep(60)
