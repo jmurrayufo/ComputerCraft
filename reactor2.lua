@@ -49,55 +49,27 @@ shell.run("resetAll")
 peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[1] end ).setAllControlRodLevels(82)
 
 while 1 do
-   foundLowTurb = false
-   print("")
-   print("Searching Turbines...")
-   for i = 1,currentIndex-1 do
+   for i = 1,#turbines do
       cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
       cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
       if cT.getEnergyStored() < 0.75 *  turbineMaxInBuffer then
-         foundLowTurb = true
-         print("Found low@"..i)
+         print("Up Power to Reactor"..i)
+         cR.setAllControlRodLevels( math.max( cR.getControlRodLevel(1) - 1, 82 ) )
       end
    end
-
-   cR = peripheral.find( 
-      "BigReactors-Reactor", 
-      function(name,object) return name==reactors[currentIndex] end 
-      )
-
-   if foundLowTurb then
-      timeOfLastAction = myTime()
-      print("Power up")
-      
-      cR.setAllControlRodLevels( math.max( cR.getControlRodLevel(1) - 1, 82 ) )
-
-      if cR.getControlRodLevel(1) <= minRodSetting then
-         print("Next Reactor")
-         -- Index up a reactor if we can
-         currentIndex = math.min( currentIndex + 1, 12 )
-         -- the next loop will handle this 
+   -- Once per minecraft day (20 minutes) try to throttle back every reactor!
+   if myTime() - timeOfLastAction > 1 then
+      for i = 1,#turbines do
+         cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
+         cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
+         if cT.getEnergyStored() > 0.95 *  turbineMaxInBuffer then
+            print("Reduce Power to Reactor"..i)
+            cR.setAllControlRodLevels( math.min( cR.getControlRodLevel(1) + 1, 100 ) )
+         end
       end
-   elseif myTime() - timeOfLastAction > 1/4 then
-      timeOfLastAction = myTime()
-      print("Power down")
-      cR.setAllControlRodLevels( math.min( cR.getControlRodLevel(1) + 1, 100 ) )
-
-      if cR.getControlRodLevel(1) >= maxRodSetting then
-         print("Previous Reactor")
-         -- Index down a reactor if we can
-         currentIndex = math.max( currentIndex - 1, 2 )
-         -- the next loop will handle this 
-      end
-
    end
-   print("Turbine:"..currentIndex)
-   print("    Raw:"..cR.getControlRodLevel(1))
-   print(string.format("  Power: %d%%",(100-cR.getControlRodLevel(1))*5.555 ) )
-      
    sleep(60)
 end
-return
 
 -- while 1 do
 --    --local i = 1 --do I need this?
