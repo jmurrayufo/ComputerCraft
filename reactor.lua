@@ -50,6 +50,7 @@ peripheral.find( "BigReactors-Reactor", function(name,object) return name==react
 
 while 1 do
    foundLowTurb = false
+   print("")
    print("Searching Turbines...")
    for i = 1,currentIndex-1 do
       cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
@@ -91,7 +92,7 @@ while 1 do
 
    end
    print("Turbine:"..currentIndex)
-   print(string.format("Power: %f%%",(100-cR.getControlRodLevel(1))*5.555 ) )
+   print(string.format("  Power: %f%%",(100-cR.getControlRodLevel(1))*5.555 ) )
       
    sleep(60)
 end
