@@ -91,7 +91,7 @@ while 1 do
 
    end
       
-   sleep(10)
+   sleep(60)
 end
 return
 
