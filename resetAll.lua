@@ -28,6 +28,10 @@ local reactors = {
    "BigReactors-Reactor_13", --#12
 }
 
+local myScr = peripheral.wrap("right")
+myScr.setCursorPos(1,1)
+myScr.clear()
+
 for i=1,#turbines do
    myScr.scroll(-1)
    myScr.setCursorPos(1,1)

@@ -27,10 +27,14 @@ local reactors = {
    "BigReactors-Reactor_14", --#11
    "BigReactors-Reactor_13", --#12
 }
+local myScr = peripheral.wrap("right")
+myScr.setCursorPos(1,1)
+myScr.clear()
+
 for i=1,#turbines do
-   myScr.scroll(-1)
-   myScr.setCursorPos(1,1)
-   myScr.write("Index:"..i)
+   -- myScr.scroll(-1)
+   -- myScr.setCursorPos(1,1)
+   -- myScr.write("Index:"..i)
    curTurbine = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
    curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
 
