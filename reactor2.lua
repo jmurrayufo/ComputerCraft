@@ -46,9 +46,9 @@ local timeOfLastAction = myTime()
 myScr.setCursorPos(1,1)
 myScr.clear()
 shell.run("resetAll")
-peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[1] end ).setAllControlRodLevels(82)
 
 while 1 do
+   term.clear()
    for i = 1,#turbines do
       cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
       cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
