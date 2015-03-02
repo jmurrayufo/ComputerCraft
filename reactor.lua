@@ -45,7 +45,8 @@ local timeOfLastAction = myTime()
 
 myScr.setCursorPos(1,1)
 myScr.clear()
-
+shell.run("resetAll")
+peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[1] end ).setAllControlRodLevels(82)
 
 while 1 do
    foundLowTurb = false
