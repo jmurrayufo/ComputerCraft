@@ -1,4 +1,4 @@
--- V1.0.1
+-- V1.0.7
 local turbines = {
    "BigReactors-Turbine_15", --#1
    "BigReactors-Turbine_4", --#2
@@ -55,7 +55,7 @@ while 1 do
    for i = 1,currentIndex-1 do
       cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
       cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
-      if cT.getEnergyStored() < 0.99 *  turbineMaxInBuffer then
+      if cT.getEnergyStored() < 0.75 *  turbineMaxInBuffer then
          foundLowTurb = true
          print("Found low@"..i)
       end
@@ -78,7 +78,7 @@ while 1 do
          currentIndex = math.min( currentIndex + 1, 12 )
          -- the next loop will handle this 
       end
-   elseif myTime() - timeOfLastAction > 1/24 then
+   elseif myTime() - timeOfLastAction > 1/4 then
       timeOfLastAction = myTime()
       print("Power down")
       cR.setAllControlRodLevels( math.min( cR.getControlRodLevel(1) + 1, 100 ) )
@@ -93,7 +93,7 @@ while 1 do
    end
    print("Turbine:"..currentIndex)
    print("    Raw:"..cR.getControlRodLevel(1))
-   print(string.format("  Power: %f%%",(100-cR.getControlRodLevel(1))*5.555 ) )
+   print(string.format("  Power: %.0f%%",(100-cR.getControlRodLevel(1))*5.555 ) )
       
    sleep(60)
 end
