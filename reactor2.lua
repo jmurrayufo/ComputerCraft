@@ -59,6 +59,7 @@ while 1 do
    end
    -- Once per minecraft day (20 minutes) try to throttle back every reactor!
    if myTime() - timeOfLastAction > 1 then
+      timeOfLastAction = myTime()
       for i = 1,#turbines do
          cT = peripheral.find( "BigReactors-Turbine", function(name,object) return name==turbines[i] end )
          cR = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[i] end )
