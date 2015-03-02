@@ -43,3 +43,6 @@ for i=1,#turbines do
    curReactor.setAllControlRodLevels(100)
    curReactor.setActive(true)
 end
+
+curReactor = peripheral.find( "BigReactors-Reactor", function(name,object) return name==reactors[1] end )
+curReactor.setAllControlRodLevels(82)
